@@ -14,6 +14,8 @@ v-else-if
 
 v-else
 
+*these 3 need to be used on siblings (elements that come 1 after the other)
+
 
 these 3 can be replaced with v-show (for simple stuff)
 

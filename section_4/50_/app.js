@@ -1,5 +1,5 @@
 function getRandomValue(min,max){
-    const atk =  Math.floor(Math.random() * (max-min)) + min;
+    return Math.floor(Math.random() * (max-min)) + min;
 }
 const app = Vue.createApp({
     data (){
@@ -7,6 +7,16 @@ const app = Vue.createApp({
             playerHealth: 100,
             monsterHealth: 100,
         }
+    },
+
+    computed: {
+        monsterBarStyles(){
+            return {width: this.monsterHealth+'%'}
+        },
+        playerBarStyles(){
+            return {width: this.playerHealth+'%'}
+        },
+
     },
 
     methods: {

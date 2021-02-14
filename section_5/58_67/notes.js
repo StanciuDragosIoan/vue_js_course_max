@@ -40,3 +40,49 @@ proxy.message = "Helloooo!!!!"
 
 console.log(proxy.longMessage);
 
+
+//templates
+
+/*
+
+apps use html to manipulate it and display content,
+
+that html is the template of the app (the div onto which we mount the app)
+
+we can also declare a template in the app config object (near methods, 
+computed, data, etc..)
+
+
+
+//App lifecycle
+
+
+createApp({...})
+
+1st lifecycle hook = beforeCreate()
+
+2nd created()
+
+//nothing on screen yet  
+
+//now the template is compiled
+
+3rd beforeMount(); //before displaying stuff on screen
+
+4th mounted(); //now we see stuff on the screen
+
+now we have the Mounted app
+
+5th beforeUpdate();
+
+6th updated();//now the updated data is visible on screen
+
+//instance can be unmounted
+
+7th beforeUnmount();
+
+8th unmounted(); //app stopped
+
+
+*/
+

@@ -1,0 +1,7 @@
+/*
+
+Components are good when HTML sections repeat themselves and should have
+individual functionality inside of them
+
+
+*/

@@ -17,19 +17,9 @@
       <h1>FriendList</h1>
     </header>
     <section id="app">
-      <ul v-for="friend in friends" :key="friend.id">
-        <li>
-          <h2>{{friend.name}}</h2>
-          <button @click="toggleDetails">
-            {{
-              isVisible ? 'Hide' : 'Show'
-            }}
-          </button>
-          <ul v-if="isVisible">
-            <li><strong>Phone:</strong>{{friend.phone}}</li>
-            <li><strong>Email:</strong>{{friend.email }}</li>
-          </ul>
-        </li>
+      <ul>
+          <friend-contact></friend-contact>
+          <friend-contact></friend-contact>
       </ul>
     </section>
   </body>

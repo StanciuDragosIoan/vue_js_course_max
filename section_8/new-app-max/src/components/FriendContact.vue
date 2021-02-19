@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }}{{ friendIsFavourite ? "(Favourite)" : "" }}</h2>
+    <h2>{{ name }}{{ isFavourite ? "(Favourite)" : "" }}</h2>
     <button @click="toggleFavourite">Toggle favourite</button>
     <button @click="toggleDetalis">
       {{ detailsAreVisible ? "Hide" : "Show" }}
@@ -16,6 +16,10 @@
 export default {
   // props: ["name", "phoneNumber", "emailAddress", "isFavourite"],
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -33,10 +37,20 @@ export default {
       default: false,
     },
   },
+  //emits: ['toggle-favourite'],
+  emits: {
+    "toggle-favourite": (id) => {
+      if (id) {
+        return true;
+      } else {
+        console.warn("id is missing");
+        return false;
+      }
+    },
+  },
   data() {
     return {
       detailsAreVisible: false,
-      friendIsFavourite: this.isFavourite,
     };
   },
 
@@ -47,7 +61,8 @@ export default {
     },
 
     toggleFavourite() {
-      this.friendIsFavourite = !this.friendIsFavourite;
+      //emmit event to listen to from parent
+      this.$emit("toggle-favourite", this.id);
     },
   },
 };

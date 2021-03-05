@@ -14,6 +14,12 @@ slots
 scoped slots (receive props and have access to data from the parent component,
 data which otherwise is unavailable)
 
+slots can be used to add a placeholder for dynamic HTML
+
+multiple named slots are possible, default fallbacks are possible
+
+scoped slots allow advanced use-cases
+
 
 <keep-alive></keep-alive> component caches the nested component
 
@@ -29,5 +35,11 @@ the <keep-alive></keep-alive> (keeps internal component state such as forms
 
 the <teleport></teleport> (teleports based on the 'to' prop which takes in a
 css selector)
+
+
+
+style guide for vue names/folder structure
+
+https://vuejs.org/v2/style-guide/
 
 */

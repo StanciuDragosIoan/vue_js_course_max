@@ -374,4 +374,16 @@ style guide for vue names/folder structure
 
 https://vuejs.org/v2/style-guide/
 
+
+# SECTION_10_NOTES
+
+fallthrough events/props
+
+-if we use events or props on a custom component, that we defined,
+they fall through to the root element of the component
+
+-e.g. if we have a customBtn component, which has a default HTML button in it
+the click events we set on customBtn fall through to the button element inside
+of it, same for props   
+
 */

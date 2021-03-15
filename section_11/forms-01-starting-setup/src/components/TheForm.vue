@@ -92,6 +92,9 @@
         <label for="how-other">Other</label>
       </div>
     </div>
+    <div class="form-control">
+      <rating-control v-model="rating"></rating-control>
+    </div>
     <div class="form-contro">
       <input
         type="checkbox"
@@ -106,6 +109,50 @@
     </div>
   </form>
 </template>
+
+<script>
+import RatingControl from './RatingControl.vue';
+export default {
+  components: {
+    RatingControl
+  },
+  data() {
+    return {
+      userName: '',
+      userAge: null,
+      referer: 'wom',
+      interest: [],
+      how: [],
+      rating: null,
+      confirm: false,
+      userNameValidity: 'pending'
+    };
+  },
+  methods: {
+    submitForm() {
+      // console.log(this.referer);
+      // this.referer = 'wom';
+      // console.log('My checkboxes');
+      // console.log(this.interest);
+      // console.log('My radio btns');
+      // console.log(this.how);
+      // this.interest = [];
+      // this.how = [];
+      //console.log(this.confirm);
+      console.log(this.rating);
+      this.rating = null;
+    },
+
+    validateInput() {
+      if (this.userName === '') {
+        this.userNameValidity = 'invalid';
+      } else {
+        this.userNameValidity = 'valid';
+      }
+    }
+  }
+};
+</script>
 
 <style scoped>
 form {
@@ -178,39 +225,3 @@ button:active {
   background-color: #002350;
 }
 </style>
-<script>
-export default {
-  data() {
-    return {
-      userName: '',
-      userAge: null,
-      referer: 'wom',
-      interest: [],
-      how: [],
-      confirm: false,
-      userNameValidity: 'pending'
-    };
-  },
-  methods: {
-    submitForm() {
-      // console.log(this.referer);
-      // this.referer = 'wom';
-      // console.log('My checkboxes');
-      // console.log(this.interest);
-      // console.log('My radio btns');
-      // console.log(this.how);
-      // this.interest = [];
-      // this.how = [];
-      console.log(this.confirm);
-    },
-
-    validateInput() {
-      if (this.userName === '') {
-        this.userNameValidity = 'invalid';
-      } else {
-        this.userNameValidity = 'valid';
-      }
-    }
-  }
-};
-</script>

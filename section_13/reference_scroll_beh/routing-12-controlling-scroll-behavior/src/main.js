@@ -12,65 +12,41 @@ import UsersFooter from './components/users/UsersFooter.vue';
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    { path: '/', redirect: '/teams' },
     {
       name: 'teams',
-      path: '/',
-      redirect: 'teams'
-    },
-    {
       path: '/teams',
-      components: {
-        default: TeamsList,
-        footer: TeamsFooter
-      }, //our-domain.com/teams =>,
-      // alias: '/'
+      components: { default: TeamsList, footer: TeamsFooter },
       children: [
         {
           name: 'team-members',
           path: ':teamId',
           component: TeamMembers,
           props: true
-        }
+        } // /teams/t1
       ]
-    },
-
+    }, // our-domain.com/teams => TeamsList
     {
       path: '/users',
-      components: { default: UsersList, footer: UsersFooter }, //our-domain.com/teams =>
-      beforeEnter(to, from, next) {
-        console.log('users beforeEnter', to, from);
-        next();
+      components: {
+        default: UsersList,
+        footer: UsersFooter
       }
     },
-
-    {
-      path: '/:notFound(.*)',
-      component: NotFound
-    }
+    { path: '/:notFound(.*)', component: NotFound }
   ],
-  scrollBehavior(_, _2, savedPosition) {
-    console.log('TEST');
-    // console.log(to, from, savedPosition);
+  linkActiveClass: 'active',
+  scrollBehavior(to, from, savedPosition) {
+    console.log(to, from, savedPosition);
     if (savedPosition) {
       return savedPosition;
     }
     return { left: 0, top: 0 };
   }
-  // linkActiveClass: 'active',
-});
-
-router.beforeEach((to, from, next) => {
-  console.log('Global beforeEach');
-  console.log(to, from);
-  next();
-  // if (to.name === 'team-members') {
-  //   next();
-  // } else {
-  //   next({ name: 'team-members', params: { teamId: 't2' } });
-  // }
 });
 
 const app = createApp(App);
+
 app.use(router);
 
 app.mount('#app');

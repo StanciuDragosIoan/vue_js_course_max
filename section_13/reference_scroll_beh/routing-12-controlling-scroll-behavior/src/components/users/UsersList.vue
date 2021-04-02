@@ -1,12 +1,7 @@
 <template>
   <button @click="confirmInput">Confirm</button>
   <ul>
-    <user-item
-      v-for="user in users"
-      :key="user.id"
-      :name="user.fullName"
-      :role="user.role"
-    ></user-item>
+    <user-item v-for="user in users" :key="user.id" :name="user.fullName" :role="user.role"></user-item>
   </ul>
 </template>
 
@@ -15,19 +10,14 @@ import UserItem from './UserItem.vue';
 
 export default {
   components: {
-    UserItem
+    UserItem,
   },
   inject: ['users'],
   methods: {
     confirmInput() {
       // do something
-      // navigate away programatically
       this.$router.push('/teams');
     }
-  },
-  beforeRouteEnter(to, from, next) {
-    console.log('usersList component beforeRouteEnter', next, to, from);
-    next();
   }
 };
 </script>

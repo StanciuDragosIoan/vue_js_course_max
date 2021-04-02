@@ -20,47 +20,37 @@ export default {
   inject: ['users', 'teams'],
   props: ['teamId'],
   components: {
-    UserItem
+    UserItem,
   },
   data() {
     return {
       teamName: '',
-      members: []
+      members: [],
     };
   },
-
   methods: {
     loadTeamMembers(teamId) {
-      if (teamId !== undefined) {
-        const selectedTeam = this.teams.find(team => team.id === teamId);
-        const members = selectedTeam.members;
-        const selectedMembers = [];
-        for (const member of members) {
-          const selectedUser = this.users.find(user => user.id === member);
-          selectedMembers.push(selectedUser);
-        }
-        this.members = selectedMembers;
-        this.teamName = selectedTeam.name;
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
+      const members = selectedTeam.members;
+      const selectedMembers = [];
+      for (const member of members) {
+        const selectedUser = this.users.find((user) => user.id === member);
+        selectedMembers.push(selectedUser);
       }
-    }
+      this.members = selectedMembers;
+      this.teamName = selectedTeam.name;
+    },
   },
-
   created() {
+    // this.$route.path // /teams/t1
     this.loadTeamMembers(this.teamId);
     console.log(this.$route.query);
   },
-
-  // beforeRouteUpdate(to, from, next) {
-  //   console.log('Team members component beforeRouteUpdate', to, from, next);
-  //   this.loadTeamMembers(to.params.teamId);
-  //   next();
-  // },
-
   watch: {
     teamId(newId) {
       this.loadTeamMembers(newId);
-    }
-  }
+    },
+  },
 };
 </script>
 

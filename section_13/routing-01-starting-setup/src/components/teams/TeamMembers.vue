@@ -55,7 +55,6 @@ export default {
   //   this.loadTeamMembers(to.params.teamId);
   //   next();
   // },
-
   watch: {
     teamId(newId) {
       this.loadTeamMembers(newId);

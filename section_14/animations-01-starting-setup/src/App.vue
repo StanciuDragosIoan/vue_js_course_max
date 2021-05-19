@@ -1,36 +1,23 @@
 <template>
   <div class="container">
-    <div class="block" :class="{ animate: animatedBlock }"></div>
+    <div class="block" :class="{animate: animatedBlock}"></div>
     <button @click="animateBlock">Animate</button>
   </div>
-  <div class="container">
-    <transition name="para">
-      <p v-if="paraIsVisible">This is only sometimes visible...</p>
-    </transition>
-    <button @click="toggleParagraph">Toggle Paragraph</button>
-  </div>
-
-  <base-modal
-    @close="hideDialog"
-    v-if="dialogIsVisible"
-    :open="dialogIsVisible"
-  >
+  <base-modal @close="hideDialog" v-if="dialogIsVisible">
     <p>This is a test dialog!</p>
     <button @click="hideDialog">Close it!</button>
   </base-modal>
-
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
   </div>
-</template>
+</template>  
 
 <script>
 export default {
   data() {
-    return {
-      dialogIsVisible: false,
+    return { 
       animatedBlock: false,
-      paraIsVisible: false
+      dialogIsVisible: false 
     };
   },
   methods: {
@@ -43,10 +30,7 @@ export default {
     animateBlock() {
       this.animatedBlock = true;
     },
-    toggleParagraph() {
-      this.paraIsVisible = !this.paraIsVisible;
-    }
-  }
+  },
 };
 </script>
 
@@ -92,45 +76,14 @@ button:active {
   border: 2px solid #ccc;
   border-radius: 12px;
 }
-
 .animate {
   /* transform: translateX(-150px); */
-  animation: slide-scale 0.3s ease-out forwards;
+  animation: slide-fade 0.3s ease-out forwards;
 }
 
-.v-enter-from {
-  /* opacity: 0;
-  transform: translateY(-30px); */
-}
-
-.para-enter-active {
-  /* transition: all 0.3s ease-out; */
-  animation: slide-scale 0.3s ease-out;
-}
-
-.v-enter-to {
-  /* opacity: 1;
-  transform: translateY(0); */
-}
-
-.v-leave-from {
-  /* opacity: 1;
-  transform: translateY(0); */
-}
-
-.para-leave-active {
-  /* transition: all 0.3s ease-in; */
-  animation: slide-scale 0.3s ease-out;
-}
-
-.v-leave-to {
-  /* opacity: 0;
-  transform: translateY(30px); */
-}
-
-@keyframes slide-scale {
+@keyframes slide-fade {
   0% {
-    transform: translateX(0) scale(1); /* scale changes the size */
+    transform: translateX(0) scale(1);
   }
 
   70% {

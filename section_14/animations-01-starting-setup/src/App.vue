@@ -1,12 +1,15 @@
 <template>
   <div class="container">
+    <UsersList />
+  </div>
+  <div class="container">
     <div class="block" :class="{ animate: animatedBlock }"></div>
     <button @click="animateBlock">Animate</button>
   </div>
   <div class="container">
     <!-- enter-to-class="customClass"/ enter-active-class ... -->
     <transition
-      name="para"
+      :css="false"
       @before-enter="beforeEnter"
       @before-leave="beforeLeave"
       @enter="enter"
@@ -39,7 +42,11 @@
 </template>
 
 <script>
+import UsersList from './components/UsersList';
 export default {
+  components: {
+    UsersList
+  },
   data() {
     return {
       animatedBlock: false,
